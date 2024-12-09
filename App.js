@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Image,TouchableOpacity,FlatList,SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View,Image,TouchableOpacity,FlatList,SafeAreaView, ScrollView, Dimensions } from 'react-native';
 import ImageWithAddButton from './components/button/ImageWithAddButon'
 import CarouselContainer from './components/carousel/Carousel';
+import HoverButton from './components/HoverButton/hoverButton';
 
 const imageData = [
   { id: '1', uri: 'https://via.placeholder.com/200' },
@@ -10,6 +11,12 @@ const imageData = [
   { id: '4', uri: 'https://via.placeholder.com/200/0000FF' },
   { id: '5', uri: 'https://via.placeholder.com/200/FFFF00' },
 ];
+
+const hoverbuttonCentre =  () => {
+  const x = Dimensions.get('window').width/2
+  return x - 75;
+} 
+
 export default function App() {
   return (
 
@@ -21,7 +28,9 @@ export default function App() {
       <CarouselContainer imageData={imageData}/>
       <CarouselContainer imageData={imageData}/>
       </ScrollView>
-      
+    
+    <HoverButton></HoverButton>
+
     </SafeAreaView>
   );
 }
@@ -37,5 +46,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f5f5f5',
-  },
+  }
 });
