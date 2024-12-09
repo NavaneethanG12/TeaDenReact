@@ -12,11 +12,6 @@ const imageData = [
   { id: '5', uri: 'https://via.placeholder.com/200/FFFF00' },
 ];
 
-const hoverbuttonCentre =  () => {
-  const x = Dimensions.get('window').width/2
-  return x - 75;
-} 
-
 export default function App() {
   return (
 
@@ -29,7 +24,7 @@ export default function App() {
       <CarouselContainer imageData={imageData}/>
       </ScrollView>
     
-    <HoverButton></HoverButton>
+    <HoverButton buttonWidth={200}></HoverButton>
 
     </SafeAreaView>
   );

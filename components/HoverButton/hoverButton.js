@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList, Dimensions } from 'react-native';
 
-const hoverbuttonCentre =  () => {
+// const buttonWidth = 150;
+
+const hoverbuttonCentre = (buttonWidth) => {
     const x = Dimensions.get('window').width/2
-    return x - 75;
+    return x - (buttonWidth/2);
 } 
 
-const HoverButton = () => {
+const HoverButton = ({buttonWidth}) => {
     return (
-    <TouchableOpacity style = {[styles.hoverView, {left: hoverbuttonCentre}, {alignContent: 'center', justifyContent: 'center'}]}>
+    <TouchableOpacity style = {[styles.hoverView, {left: hoverbuttonCentre(buttonWidth)}, {alignContent: 'center', justifyContent: 'center', width: buttonWidth}]}>
     <Text > ADD </Text>
     </TouchableOpacity>
     );
@@ -19,7 +21,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 20,
         backgroundColor: 'red',
-        width: 150,
         height: 50,
         borderRadius: 25,
         justifyContent: 'center',
