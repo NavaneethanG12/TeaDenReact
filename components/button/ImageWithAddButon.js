@@ -1,27 +1,10 @@
 // ImageWithAddButton.js
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList } from 'react-native';
+import StepperButton from './StepperButton';
 
 const ImageWithAddButton = ({ imageUri }) => {
-  const [count, setCount] = useState(0);
-
-  // Increment the count
-  const handleIncrement = () => setCount(count + 1);
-
-  // Decrement the count (but not below 0)
-  const handleDecrement = () => {
-    if (count > 0) {
-      setCount(count - 1);
-    }
-  };
-
-  // Handle the Add button click
-  const handleAddClick = () => {
-    if (count === 0) {
-      setCount(1); // Optionally, start at 1 when clicked
-    }
-  };
-
+ 
   return (
     <View style={styles.container}>
       {/* Image */}
@@ -29,25 +12,7 @@ const ImageWithAddButton = ({ imageUri }) => {
         source={{ uri: imageUri }}
         style={styles.image}
       />
-
-      {/* Button Section */}
-      <View style={styles.overlayContainer}>
-        {count === 0 ? (
-          <TouchableOpacity onPress={handleAddClick} style={styles.addButton}>
-            <Text style={styles.buttonText}>Add</Text>
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.counterContainer}>
-            <TouchableOpacity onPress={handleDecrement} style={styles.counterButton}>
-              <Text style={styles.buttonText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.counterText}>{count}</Text>
-            <TouchableOpacity onPress={handleIncrement} style={styles.counterButton}>
-              <Text style={styles.buttonText}>+</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </View>
+      <StepperButton style={styles.overlayContainer}></StepperButton>
     </View>
   );
 };

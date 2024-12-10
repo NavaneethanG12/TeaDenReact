@@ -1,10 +1,11 @@
 // ImageWithAddButton.js
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native';
 import ImageWithAddButton from '../button/ImageWithAddButon';
 
 const CarouselContainer = ({imageData}) => {
 
+  console.log(`Imagae data is ${imageData}`)
   return (
     <View style={{height:300}}>
         <Text>HOT BEVERAGES</Text>

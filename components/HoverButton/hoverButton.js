@@ -8,10 +8,10 @@ const hoverbuttonCentre = (buttonWidth) => {
     return x - (buttonWidth/2);
 } 
 
-const HoverButton = ({buttonWidth}) => {
+const HoverButton = ({buttonWidth, title}) => {
     return (
     <TouchableOpacity style = {[styles.hoverView, {left: hoverbuttonCentre(buttonWidth)}, {alignContent: 'center', justifyContent: 'center', width: buttonWidth}]}>
-    <Text > ADD </Text>
+    <Text > {title} </Text>
     </TouchableOpacity>
     );
   };
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 20,
         backgroundColor: 'red',
-        height: 50,
+        height: 400,
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center'
