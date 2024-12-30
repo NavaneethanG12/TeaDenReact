@@ -5,7 +5,7 @@ import CarouselContainer from './components/carousel/Carousel';
 import HoverButton from './components/HoverButton/hoverButton';
 import BillItemComponent from './components/Billing/BillItemComponent';
 import ChekoutPage from './components/Billing/CheckoutPage';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomePageComponent from './components/homepage/homepage';
 const imageData = [
   { id: '1', uri: 'https://via.placeholder.com/200' },
@@ -79,66 +79,46 @@ const categories = [
       }
 
     ]
-  },
-  {
-    categoryId: '3',
-    categoryName: 'Snacks',
-    items: [
-      {
-        productId: '9',
-        productName: 'Puffs',
-        imageUrl: 'https://via.placeholder.com/200',
-        price: 50
-      },
-      {
-        productId: '10',
-        productName: 'Biscuit',
-        imageUrl: 'https://via.placeholder.com/200//FF0000',
-        price: 50
-      },
-      {
-        productId: '11',
-        productName: 'Samosa',
-        imageUrl: 'https://via.placeholder.com/200',
-        price: 50
-      }
-
-    ]
   }
+  // {
+  //   categoryId: '3',
+  //   categoryName: 'Snacks',
+  //   items: [
+  //     {
+  //       productId: '9',
+  //       productName: 'Puffs',
+  //       imageUrl: 'https://via.placeholder.com/200',
+  //       price: 50
+  //     },
+  //     {
+  //       productId: '10',
+  //       productName: 'Biscuit',
+  //       imageUrl: 'https://via.placeholder.com/200//FF0000',
+  //       price: 50
+  //     },
+  //     {
+  //       productId: '11',
+  //       productName: 'Samosa',
+  //       imageUrl: 'https://via.placeholder.com/200',
+  //       price: 50
+  //     }
+
+  //   ]
+  // }
 ]
 
 export default function App() {
   return (
-
-    <SafeAreaView style={styles.container}>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+      <StatusBar 
+                barStyle = "light-content" // Controls text color: 'dark-content', 'light-content', 'default'
+                backgroundColor = 'red' // Set background color for Android
+                translucent = {false} // Set to true if you want content to draw under the status bar
+            />
       <HomePageComponent categories={categories}/>
-      {/* <ScrollView>
-      <CarouselContainer imageData={imageData}/>
-      <CarouselContainer imageData={imageData}/>
-      <CarouselContainer imageData={imageData}/>
-      <CarouselContainer imageData={imageData}/>
-      <CarouselContainer imageData={imageData}/>
-      </ScrollView>
-    
-    <HoverButton buttonWidth={200}></HoverButton> */}
-
-    {/* <ScrollView style = {[{width: '100%'}]}>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-      <BillItemComponent></BillItemComponent>
-    </ScrollView> */}
-
-      {/* <ChekoutPage billItems={imageData}></ChekoutPage> */}
-    </SafeAreaView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -150,8 +130,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#f5f5f5',
   }
 });

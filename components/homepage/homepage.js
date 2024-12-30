@@ -4,11 +4,10 @@ import { ScrollView, View, TouchableOpacity, Image, StyleSheet } from 'react-nat
 import HoverButton from "../HoverButton/hoverButton";
 const HomePageComponent = ({categories}) => {
     return (
-        <View>
-
+        <View style = {{flex: 1}}>
             <ScrollView>
                 {categories.map((category) => (
-            <CarouselContainer categoryData={category}></CarouselContainer>
+            <CarouselContainer key={category.categoryId} categoryData={category}></CarouselContainer>
           ))}
             </ScrollView> 
             <HoverButton buttonWidth={200} title={'Go To Cart'}></HoverButton>     
