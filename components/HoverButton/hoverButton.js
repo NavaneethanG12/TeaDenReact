@@ -8,9 +8,9 @@ const hoverbuttonCentre = (buttonWidth) => {
     return x - (buttonWidth/2);
 } 
 
-const HoverButton = ({buttonWidth, title}) => {
+const HoverButton = ({buttonWidth, title, onPress}) => {
     return (
-    <TouchableOpacity style = {[styles.hoverView, {left: hoverbuttonCentre(buttonWidth)}, {alignContent: 'center', justifyContent: 'center', width: buttonWidth}]}>
+    <TouchableOpacity style = {[styles.hoverView, {left: hoverbuttonCentre(buttonWidth)}, {alignContent: 'center', justifyContent: 'center', width: buttonWidth}]} onPress={onPress}>
     <Text > {title} </Text>
     </TouchableOpacity>
     );

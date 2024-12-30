@@ -3,17 +3,21 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 
-const StepperButton = ({style}) => {
+const StepperButton = ({style, onTap}) => {
 
 const [count, setCount] = useState(0);
 
   // Increment the count
-const handleIncrement = () => setCount(count + 1);
+const handleIncrement = () => {
+  setCount(count + 1);
+  onTap(count + 1)
+};
 
   // Decrement the count (but not below 0)
 const handleDecrement = () => {
     if (count > 0) {
       setCount(count - 1);
+      onTap(count - 1)
     }
   };
 
@@ -21,6 +25,7 @@ const handleDecrement = () => {
 const handleAddClick = () => {
     if (count === 0) {
       setCount(1); // Optionally, start at 1 when clicked
+      onTap(1)
     }
 };
 

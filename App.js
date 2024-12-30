@@ -6,8 +6,8 @@ import HoverButton from './components/HoverButton/hoverButton';
 import BillItemComponent from './components/Billing/BillItemComponent';
 import ChekoutPage from './components/Billing/CheckoutPage';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomePageComponent from './components/homepage/homepage';
 const imageData = [
   { id: '1', uri: 'https://via.placeholder.com/200' },
@@ -26,24 +26,28 @@ const categories = [
     items: [
       {
         productId: '1',
+        categoryId: '1',
         productName: 'Classic Tea',
         imageUrl: 'https://via.placeholder.com/200',
         price: 15
       },
       {
         productId: '2',
+        categoryId: '1',
         productName: 'Elachi Tea',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
         price: 15
       },
       {
         productId: '3',
+        categoryId: '1',
         productName: 'Ginger Tea',
         imageUrl: 'https://via.placeholder.com/200',
         price: 20
       },
       {
         productId: '4',
+        categoryId: '1',
         productName: 'Honey Tea',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
         price: 15
@@ -57,24 +61,28 @@ const categories = [
     items: [
       {
         productId: '5',
+        categoryId: '2',
         productName: 'Cold Boost',
         imageUrl: 'https://via.placeholder.com/200',
         price: 50
       },
       {
         productId: '6',
+        categoryId: '2',
         productName: 'Cold Coffee',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
         price: 50
       },
       {
         productId: '7',
+        categoryId: '2',
         productName: 'Cold Bourn',
         imageUrl: 'https://via.placeholder.com/200',
         price: 50
       },
       {
         productId: '8',
+        categoryId: '2',
         productName: 'Cold Horlicks',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
         price: 50
@@ -109,6 +117,8 @@ const categories = [
   // }
 ]
 
+const Stack = createStackNavigator();
+
 const HomeScreen = ({ navigation }) => {
   return (  
     <SafeAreaProvider>
@@ -118,8 +128,7 @@ const HomeScreen = ({ navigation }) => {
                 backgroundColor = 'red' // Set background color for Android
                 translucent = {false} // Set to true if you want content to draw under the status bar
             />
-      <HomePageComponent categories={categories}/>
-      {/* <ChekoutPage billItems={categories[1].items}> </ChekoutPage> */}
+      <HomePageComponent categories={categories} goToCartTapped={ () => navigation.navigate("Modal")}/>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -127,23 +136,23 @@ const HomeScreen = ({ navigation }) => {
 
 const CheckoutPage = ({ navigation }) => {
   return (
-    <CheckoutPage items = {categories[0].items}></CheckoutPage>
+    <ChekoutPage billItems={categories[1].items}> </ChekoutPage>
   );
 };
  
+
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen name="Home" component={HomeScreen} />
-    //     <Stack.Screen
-    //       name="Modal"
-    //       component={CheckoutPage}
-    //       options={{ presentation: 'modal' }} // Use 'modal' for iOS-style modal
-    //     />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    HomeScreen(true)
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen
+          name="Modal"
+          component={CheckoutPage}
+      />
+      </Stack.Navigator>
+    </NavigationContainer>
+    // HomeScreen(true)
   );
 }
 
