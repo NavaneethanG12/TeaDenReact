@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList,ScrollView,Platform } from 'react-native';
 import BillItemComponent from './BillItemComponent';
 import HoverButton from '../HoverButton/hoverButton';
 import { Button } from 'react-native-web';
 
 const ChekoutPage = ({billItems}) => {
     return(
-       <View>
+       <View style={styles.checkoutPageContainer}>
+        
         <FlatList
             data={billItems}
             horizontal={false} // Enable horizontal scrolling
@@ -30,6 +31,10 @@ const ChekoutPage = ({billItems}) => {
 }
 
 const styles = StyleSheet.create({
+    checkoutPageContainer: {
+
+
+    },
     flatListContainer: {
         gap:10,
         // marginBottom: 100,

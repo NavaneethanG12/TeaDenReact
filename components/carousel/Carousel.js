@@ -3,18 +3,17 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native';
 import ImageWithAddButton from '../button/ImageWithAddButon';
 
-const CarouselContainer = ({imageData}) => {
+const CarouselContainer = ({categoryData}) => {
 
-  console.log(`Imagae data is ${imageData}`)
   return (
     <View style={{height:300}}>
-        <Text>HOT BEVERAGES</Text>
+        <Text>{categoryData.categoryName}</Text>
         <FlatList
-            data={imageData}
+            data={categoryData.items}
             horizontal={true} // Enable horizontal scrolling
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.productId}
             renderItem={({ item }) => (
-              <ImageWithAddButton imageUri={item.uri} />
+              <ImageWithAddButton imageUri={item.imageUrl} />
             )}
             showsHorizontalScrollIndicator={false} // Hide scroll indicator
             contentContainerStyle={styles.flatListContainer}
