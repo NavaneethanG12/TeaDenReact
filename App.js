@@ -6,6 +6,8 @@ import HoverButton from './components/HoverButton/hoverButton';
 import BillItemComponent from './components/Billing/BillItemComponent';
 import ChekoutPage from './components/Billing/CheckoutPage';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 import HomePageComponent from './components/homepage/homepage';
 const imageData = [
   { id: '1', uri: 'https://via.placeholder.com/200' },
@@ -107,8 +109,8 @@ const categories = [
   // }
 ]
 
-export default function App() {
-  return (
+const HomeScreen = ({ navigation }) => {
+  return (  
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
       <StatusBar 
@@ -117,8 +119,31 @@ export default function App() {
                 translucent = {false} // Set to true if you want content to draw under the status bar
             />
       <HomePageComponent categories={categories}/>
+      {/* <ChekoutPage billItems={categories[1].items}> </ChekoutPage> */}
       </SafeAreaView>
     </SafeAreaProvider>
+  );
+};
+
+const CheckoutPage = ({ navigation }) => {
+  return (
+    <CheckoutPage items = {categories[0].items}></CheckoutPage>
+  );
+};
+ 
+export default function App() {
+  return (
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen name="Home" component={HomeScreen} />
+    //     <Stack.Screen
+    //       name="Modal"
+    //       component={CheckoutPage}
+    //       options={{ presentation: 'modal' }} // Use 'modal' for iOS-style modal
+    //     />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+    HomeScreen(true)
   );
 }
 

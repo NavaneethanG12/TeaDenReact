@@ -6,19 +6,19 @@ const rowHeight = () => {
     const width = Dimensions.get('window').width/4
 }
 
-const BillItemComponent = () => {
+const BillItemComponent = ({product}) => {
     return (
         <View style = {styles.itemContainer}>
 
         <Image
-        source={{ uri: 'https://via.placeholder.com/200' }}
+        source={{ uri: product.imageUrl }}
         style={styles.image}/>
 
-        <Text style = {styles.text}>  Classic Tea   </Text>
+        <Text style = {styles.text}> {product.productName} </Text>
 
         <View style = {styles.stepperContainer}>
         <StepperButton style={styles.stepperButton} ></StepperButton>
-        <Text style = {styles.price}> $10 </Text>
+        <Text style = {styles.price}> {product.price} </Text>
         </View>
         </View>
     );
