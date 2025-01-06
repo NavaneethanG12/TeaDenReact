@@ -29,6 +29,7 @@ const categories = [
         categoryId: '1',
         productName: 'Classic Tea',
         imageUrl: 'https://via.placeholder.com/200',
+        count: 10,
         price: 15
       },
       {
@@ -36,6 +37,7 @@ const categories = [
         categoryId: '1',
         productName: 'Elachi Tea',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
+        count: 10,
         price: 15
       },
       {
@@ -43,6 +45,7 @@ const categories = [
         categoryId: '1',
         productName: 'Ginger Tea',
         imageUrl: 'https://via.placeholder.com/200',
+        count: 10,
         price: 20
       },
       {
@@ -50,6 +53,7 @@ const categories = [
         categoryId: '1',
         productName: 'Honey Tea',
         imageUrl: 'https://via.placeholder.com/200//FF0000',
+        count: 10,
         price: 15
       }
 
@@ -136,7 +140,7 @@ const HomeScreen = ({ navigation }) => {
 
 const CheckoutPage = ({ navigation }) => {
   return (
-    <ChekoutPage billItems={categories[1].items}> </ChekoutPage>
+    <ChekoutPage categories={ categories}> </ChekoutPage>
   );
 };
  

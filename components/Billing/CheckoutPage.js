@@ -4,40 +4,59 @@ import BillItemComponent from './BillItemComponent';
 import HoverButton from '../HoverButton/hoverButton';
 import { Button } from 'react-native-web';
 
-const ChekoutPage = ({billItems}) => {
-    return(
-       <View style={styles.checkoutPageContainer}>
-        <View style = {{marginBottom: 150}}>
+const ChekoutPage = ({ categories }) => {
+    return (
+      <View style={styles.checkoutPageContainer}>
+        {/* Scrollable Product List */}
+        <View style ={styles.flatListContainer}>
         <FlatList
-            data={billItems}
-            horizontal={false} // Enable horizontal scrolling
-            keyExtractor={(item) => item.productId}
-            renderItem={({ item }) => (
-                <BillItemComponent product={item}></BillItemComponent>
-            )}
-            showsHorizontalScrollIndicator={false} // Hide scroll indicator
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles.flatListContainer}
-          />
-        </View>
-        <View style = {styles.billOrderContainer}>
-            <Text> Hello </Text>
-
-            <TouchableOpacity style = {styles.button}>
-                <Text style = {styles.text}> Bill your order</Text>
-            </TouchableOpacity>
+          data={categories}
+          keyExtractor={(category) => category.categoryId.toString()}
+          renderItem={({ item: category }) => (
+            <View>
+              {/* Display Category Name */}
+              {/* <Text style={styles.categoryTitle}>{category.categoryName}</Text> */}
+              {/* Products in Category */}
+              <FlatList
+                data={category.items}
+                keyExtractor={(item) => item.productId.toString()}
+                renderItem={({ item }) => 
+                    {
+                        if (item.count > 0) {
+                            return <BillItemComponent product={item}></BillItemComponent>
+                        } 
+                      
+                    }
+                    
+                }
+                showsVerticalScrollIndicator={false}
+              />
             </View>
-       </View>
-    )
-}
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+        </View>
+        {/* Order Button */}
+        <View style={styles.billOrderContainer}>
+          <Text>Hello</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.text}>Bill your order</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
 
 const styles = StyleSheet.create({
     checkoutPageContainer: {
         flex: 1
     },
+    flatList: {
+        flex: 1
+    },
     flatListContainer: {
-        gap:10,
-        marginBottom: 100,
+        flex: 1,
+        marginBottom: 150,
     },
 
     billOrderContainer: {
