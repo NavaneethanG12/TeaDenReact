@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList } from 'react-native';
 import StepperButton from './StepperButton';
 
-const ImageWithAddButton = ({ imageUri, countCallBack }) => {
+const ImageWithAddButton = ({ imageUri, onTap, count }) => {
  
   return (
     <View style={styles.container}>
@@ -12,9 +12,7 @@ const ImageWithAddButton = ({ imageUri, countCallBack }) => {
         source={{ uri: imageUri }}
         style={styles.image}
       />
-      <StepperButton style={styles.overlayContainer} onTap={(count) => {
-        countCallBack(count)
-        }}></StepperButton>
+      <StepperButton style={styles.overlayContainer} countSelected={count} onTap={onTap}></StepperButton>
     </View>
   );
 };

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 
-const StepperButton = ({style, onTap}) => {
+const StepperButton = ({style, onTap,countSelected}) => {
 
-const [count, setCount] = useState(0);
+const [count, setCount] = useState(countSelected ? countSelected: 0);
 
   // Increment the count
 const handleIncrement = () => {

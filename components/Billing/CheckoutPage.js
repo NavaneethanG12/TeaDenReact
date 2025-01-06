@@ -3,14 +3,16 @@ import { View, Text, TouchableOpacity, Image, StyleSheet,FlatList,ScrollView,Pla
 import BillItemComponent from './BillItemComponent';
 import HoverButton from '../HoverButton/hoverButton';
 import { Button } from 'react-native-web';
+import { useDataContext } from '../dataProvider/dataprovider';
 
-const ChekoutPage = ({ categories }) => {
+const ChekoutPage = ({ categories,onTap }) => {
+  const { data,updateData } = useDataContext();
     return (
       <View style={styles.checkoutPageContainer}>
         {/* Scrollable Product List */}
         <View style ={styles.flatListContainer}>
         <FlatList
-          data={categories}
+          data={data}
           keyExtractor={(category) => category.categoryId.toString()}
           renderItem={({ item: category }) => (
             <View>
@@ -22,9 +24,10 @@ const ChekoutPage = ({ categories }) => {
                 keyExtractor={(item) => item.productId.toString()}
                 renderItem={({ item }) => 
                     {
-                        if (item.count > 0) {
-                            return <BillItemComponent product={item}></BillItemComponent>
-                        } 
+                      
+                      if (item.count > 0) {
+                        return <BillItemComponent product={item}></BillItemComponent>
+                    }                       
                       
                     }
                     
