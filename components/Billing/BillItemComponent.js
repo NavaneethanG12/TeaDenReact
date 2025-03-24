@@ -26,6 +26,8 @@ const BillItemComponent = ({product,onTap}) => {
 
 // commit one changes
 
+// Commit two changes 
+
 const styles = StyleSheet.create({
     itemContainer: {
         flexDirection: 'row',
