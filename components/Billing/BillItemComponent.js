@@ -6,7 +6,7 @@ const rowHeight = () => {
     const width = Dimensions.get('window').width/4
 }
 
-const BillItemComponent = ({product,onTap}) => {
+const BillItemComponent = ({product}) => {
     return (
         <View style = {styles.itemContainer}>
 
@@ -17,7 +17,7 @@ const BillItemComponent = ({product,onTap}) => {
         <Text style = {styles.text}> {product.productName} </Text>
 
         <View style = {styles.stepperContainer}>
-        <StepperButton style={styles.stepperButton} onTap={onTap} countSelected={product.count} ></StepperButton>
+        <StepperButton style={styles.stepperButton} onTap={(count) => {console.log(count)}} ></StepperButton>
         <Text style = {styles.price}> {product.price} </Text>
         </View>
         </View>
