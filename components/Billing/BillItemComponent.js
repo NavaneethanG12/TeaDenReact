@@ -6,7 +6,7 @@ const rowHeight = () => {
     const width = Dimensions.get('window').width/4
 }
 
-const BillItemComponent = ({product}) => {
+const BillItemComponent = ({product,onTap}) => {
     return (
         <View style = {styles.itemContainer}>
 
@@ -17,16 +17,12 @@ const BillItemComponent = ({product}) => {
         <Text style = {styles.text}> {product.productName} </Text>
 
         <View style = {styles.stepperContainer}>
-        <StepperButton style={styles.stepperButton} onTap={(count) => {console.log(count)}} ></StepperButton>
+        <StepperButton style={styles.stepperButton} onTap={onTap} countSelected={product.count} ></StepperButton>
         <Text style = {styles.price}> {product.price} </Text>
         </View>
         </View>
     );
 }
-
-// commit one changes
-
-// Commit two changes 
 
 const styles = StyleSheet.create({
     itemContainer: {
