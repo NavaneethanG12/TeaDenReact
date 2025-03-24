@@ -9,6 +9,7 @@ import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-cont
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePageComponent from './components/homepage/homepage';
+import DataProvider from'./components/dataProvider/dataprovider';
 const imageData = [
   { id: '1', uri: 'https://via.placeholder.com/200' },
   { id: '2', uri: 'https://via.placeholder.com/200/FF0000' },
@@ -140,14 +141,15 @@ const HomeScreen = ({ navigation }) => {
 
 const CheckoutPage = ({ navigation }) => {
   return (
-    <ChekoutPage categories={ categories}> </ChekoutPage>
+    <ChekoutPage categories={ categories} onTap={(count) => {console.log("product is",product);product.count = count}}> </ChekoutPage>
   );
 };
  
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <DataProvider>
+      <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
@@ -156,6 +158,8 @@ export default function App() {
       />
       </Stack.Navigator>
     </NavigationContainer>
+    </DataProvider>
+    
     // HomeScreen(true)
   );
 }
@@ -173,7 +177,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   }
 });
-
-
-// chnages 1st commit
-// Changes made after revert.
